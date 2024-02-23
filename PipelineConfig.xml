@@ -1,0 +1,59 @@
+
+To create a pipeline configuration in XML for using a proxy with a REST API call using Oracle Integration Cloud (OIC), you typically design the integration flow in the Oracle Integration designer. However, I can provide you with an example XML configuration for invoking a REST API with proxy settings in Oracle Integration Cloud
+
+<?xml version="1.0" encoding="UTF-8"?>
+<com.oracle.integration.platform.entities.Flow version="1.0">
+    <description>Invoke REST API with Proxy</description>
+    <type>integration</type>
+    <states>
+        <state>
+            <name>InvokeRESTAPI</name>
+            <type>RESTAdapter/RESTReference</type>
+            <adapterId>rest-adapter-id</adapterId>
+            <properties>
+                <property>
+                    <name>uri</name>
+                    <value>https://api.example.com/data</value>
+                </property>
+                <property>
+                    <name>proxyHost</name>
+                    <value>proxy.example.com</value>
+                </property>
+                <property>
+                    <name>proxyPort</name>
+                    <value>8080</value>
+                </property>
+                <property>
+                    <name>method</name>
+                    <value>GET</value>
+                </property>
+                <property>
+                    <name>contentType</name>
+                    <value>application/json</value>
+                </property>
+                <!-- Add other properties as needed -->
+            </properties>
+        </state>
+    </states>
+    <transitions>
+        <transition>
+            <fromState>InvokeRESTAPI</fromState>
+            <toState>end</toState>
+        </transition>
+    </transitions>
+</com.oracle.integration.platform.entities.Flow>
+
+
+
+
+In this XML configuration:
+
+1. Replace 'https://api.example.com/data' with the URL of the REST API endpoint you want to access.
+2. Replace 'proxy.example.com' with the hostname of your proxy server.
+3. Replace '8080' with the port number of your proxy server.
+4. Set the 'method' property to the appropriate HTTP method for your REST API call (e.g., GET, POST, PUT).
+5. Set the 'contentType' property to the appropriate content type for your request payload (if applicable).
+6. Add any other properties as needed for your specific use case, such as authentication headers or request parameters.
+
+
+This XML configuration defines an integration flow in Oracle Integration Cloud to invoke a REST API with proxy settings. You can import this configuration into Oracle Integration Cloud and deploy it to run the integration flow.
